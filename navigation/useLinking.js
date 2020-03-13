@@ -9,8 +9,8 @@ export default function (containerRef) {
 				path: 'root',
 				screens: {
 					ToDo: 'ToDo',
-					ActiveToDo: 'InProgress',
-					CompletedToDo: 'Done',
+					InProgress: 'InProgress',
+					Done: 'Done',
 					Settings: 'settings',
 				},
 			},

@@ -5,7 +5,7 @@ import * as WebBrowser from 'expo-web-browser';
 
 import { MonoText } from '../components/StyledText';
 
-export default function CompletedToDoScreen() {
+export default function DoneScreen() {
 	return (
 		<View style={styles.container}>
 			<ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
@@ -14,7 +14,7 @@ export default function CompletedToDoScreen() {
 					<DevelopmentModeNotice />
 
 					<Text style={styles.getStartedText}>
-						Placeholder for Done (Completed To Do) Screen
+						Placeholder for Done Screen
           			</Text>
 				</View>
 			</ScrollView>
@@ -22,7 +22,7 @@ export default function CompletedToDoScreen() {
 	);
 }
 
-CompletedToDoScreen.navigationOptions = {
+DoneScreen.navigationOptions = {
 	header: null,
 };
 
