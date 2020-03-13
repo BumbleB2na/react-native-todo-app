@@ -129,7 +129,7 @@ export default class AllToDoScreen extends React.Component {
 
 						<View style={styles.inputContainer}>
 							<Text style={styles.inputHeader}>
-								What's Next?
+								Your To Do Items
 							</Text>
 							<Input inputValue={inputValue} onChangeText={this.newInputValue} onDoneAddItem={this.onDoneAddItem} />
 						</View>
@@ -141,6 +141,7 @@ export default class AllToDoScreen extends React.Component {
 					<ScrollView contentContainerStyle={styles.scrollableList}>
 						{Object.values(allItems)
 							.reverse()
+							.filter(item => !item.isCompleted)
 							.map(item => (
 								<List
 									key={item.id}
@@ -149,7 +150,8 @@ export default class AllToDoScreen extends React.Component {
 									completeItem={this.completeItem}
 									incompleteItem={this.incompleteItem}
 								/>
-							))}
+							))
+						}
 					</ScrollView>
 				</View>
 			</>
