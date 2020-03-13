@@ -7,28 +7,36 @@ import { MonoText } from '../components/StyledText';
 
 // import { AddToDo } from '../components/AddToDo';
 // import { AddToDoButton } from '../components/AddToDoButton';
+import Input from '../components/Input';
 
-export default function AllToDoScreen() {
-	return (
-		<View style={styles.container}>
-			<ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
+export default class AllToDoScreen extends React.Component {
+	state = {
+		inputValue: ''
+	};
+	newInputValue = value => {
+		this.setState({
+			inputValue: value
+		});
+	};
 
-				
-				<View style={styles.getStartedContainer}>
-					<DevelopmentModeNotice />
+	render() {
+		const { inputValue } = this.state;
+		return (
+			<View style={styles.container}>
+				<ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
+					
+					<View style={styles.getStartedContainer}>
+						<DevelopmentModeNotice />
+					</View>
 
-					<Text style={styles.getStartedText}>
-						Placeholder for To Do Screen
-          			</Text>
+					<View style={styles.inputContainer}>
+						<Input inputValue={inputValue} onChangeText={this.newInputValue} />
+					</View>
 
-					{/* <AddToDo />
-
-					<AddToDoButton /> */}
-
-				</View>
-			</ScrollView>
-		</View>
-	);
+				</ScrollView>
+			</View>
+		);
+	}
 }
 
 AllToDoScreen.navigationOptions = {
@@ -80,12 +88,6 @@ const styles = StyleSheet.create({
 		alignItems: 'center',
 		marginHorizontal: 50,
 	},
-	getStartedText: {
-		fontSize: 17,
-		color: 'rgba(96,100,109, 1)',
-		lineHeight: 24,
-		textAlign: 'center',
-	},
 	navigationFilename: {
 		marginTop: 5,
 	},
@@ -100,4 +102,9 @@ const styles = StyleSheet.create({
 		fontSize: 14,
 		color: '#2e78b7',
 	},
+
+	inputContainer: {
+		marginTop: 40,
+		paddingLeft: 15
+	}
 });
