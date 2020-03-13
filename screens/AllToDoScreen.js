@@ -1,12 +1,9 @@
 import * as React from 'react';
-import { Image, Platform, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { Image, Platform, StyleSheet, Text, TouchableOpacity, View, AsyncStorage } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import * as WebBrowser from 'expo-web-browser';
 
-import { MonoText } from '../components/StyledText';
-
-// import { AddToDo } from '../components/AddToDo';
-// import { AddToDoButton } from '../components/AddToDoButton';
+import uuid from 'uuid/v1';
 import Input from '../components/Input';
 import List from '../components/List';
 
@@ -14,20 +11,7 @@ export default class AllToDoScreen extends React.Component {
 	state = {
 		inputValue: '',
 		loadingItems: false,
-		allItems: {
-			232390: {
-				id: 232390,  //same id as the object
-				text: 'Mock item created yesterday that is completed',
-				isCompleted: true,
-				createdAt: new Date((new Date()).setDate((new Date()).getDate()-1))
-			},
-			232391: {
-				id: 232391,
-				text: 'Latest mock item added to list',
-				isCompleted: false,
-				createdAt: Date.now()
-			}
-		},
+		allItems: {},
 		isCompleted: false
 	};
 	componentDidMount = () => {
@@ -39,18 +23,96 @@ export default class AllToDoScreen extends React.Component {
 		});
 	};
 	loadingItems = async () => {
+		try {
+			const allItems = await AsyncStorage.getItem('ToDos');
+			this.setState({
+				loadingItems: true,
+				allItems: JSON.parse(allItems) || {}
+			});
+		} catch (err) {
+			console.log(err);
+		}
 	};
 	onDoneAddItem = () => {
+		const { inputValue } = this.state;
+		if (inputValue !== '') {
+			this.setState(prevState => {
+				const id = uuid();
+				const newItemObject = {
+					[id]: {
+						id,
+						isCompleted: false,
+						text: inputValue,
+						createdAt: Date.now()
+					}
+	};
+				const newState = {
+					...prevState,
+					inputValue: '',
+					allItems: {
+						...prevState.allItems,
+						...newItemObject
+					}
+				};
+				this.saveItems(newState.allItems);
+				return { ...newState };
+			});
+		}
 	};
 	deleteItem = id => {
+		this.setState(prevState => {
+			const allItems = prevState.allItems;
+			delete allItems[id];
+			const newState = {
+				...prevState,
+				...allItems
+	};
+			this.saveItems(newState.allItems);
+			return { ...newState };
+		});
 	};
 	completeItem = id => {
+		this.setState(prevState => {
+			const newState = {
+				...prevState,
+				allItems: {
+					...prevState.allItems,
+					[id]: {
+						...prevState.allItems[id],
+						isCompleted: true
+					}
+				}
+	};
+			this.saveItems(newState.allItems);
+			return { ...newState };
+		});
 	};
 	incompleteItem = id => {
+		this.setState(prevState => {
+			const newState = {
+				...prevState,
+				allItems: {
+					...prevState.allItems,
+					[id]: {
+						...prevState.allItems[id],
+						isCompleted: false
+					}
+				}
+			};
+			this.saveItems(newState.allItems);
+			return { ...newState };
+		});
 	};
 	deleteAllItems = async () => {
+		try {
+			await AsyncStorage.removeItem('ToDos');
+			this.setState({ allItems: {} });
+		} catch (err) {
+			console.log(err);
+		}
 	};
 	saveItems = newItem => {
+		const saveItem = AsyncStorage.setItem('ToDos', JSON.stringify(newItem));
 	};
 
 
