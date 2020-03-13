@@ -21,7 +21,6 @@ const Input = ({ inputValue, onChangeText, onDoneAddItem }) => (
 );
 const styles = StyleSheet.create({
 	input: {
-		paddingTop: 10,
 		paddingRight: 15,
 		fontSize: 34,
 		color: 'black',

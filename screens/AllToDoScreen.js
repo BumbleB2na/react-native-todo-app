@@ -128,9 +128,6 @@ export default class AllToDoScreen extends React.Component {
 					<ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
 
 						<View style={styles.inputContainer}>
-							<Text style={styles.inputHeader}>
-								Your To Do Items
-							</Text>
 							<Input inputValue={inputValue} onChangeText={this.newInputValue} onDoneAddItem={this.onDoneAddItem} />
 						</View>
 
