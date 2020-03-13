@@ -9,7 +9,6 @@ export default function (containerRef) {
 				path: 'root',
 				screens: {
 					AllToDo: 'AllToDo',
-					InProgress: 'InProgress',
 					Done: 'Done',
 					Settings: 'settings',
 				},
