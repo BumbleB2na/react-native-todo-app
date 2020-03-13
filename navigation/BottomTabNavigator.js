@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import TabBarIcon from '../components/TabBarIcon';
-import ToDoScreen from '../screens/ToDoScreen';
+import AllToDoScreen from '../screens/AllToDoScreen';
 import InProgressScreen from '../screens/InProgressScreen';
 import DoneScreen from '../screens/DoneScreen';
 
@@ -17,8 +17,8 @@ export default function BottomTabNavigator({ navigation, route }) {
 	return (
 		<BottomTab.Navigator initialRouteName={INITIAL_ROUTE_NAME}>
 			<BottomTab.Screen
-				name="ToDo"
-				component={ToDoScreen}
+				name="AllToDo"
+				component={AllToDoScreen}
 				options={{
 					title: 'To Do',
 					tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name="md-square-outline" />,
@@ -48,7 +48,7 @@ function getHeaderTitle(route) {
 	const routeName = route.state?.routes[route.state.index]?.name ?? INITIAL_ROUTE_NAME;
 
 	switch (routeName) {
-		case 'ToDo':
+		case 'AllToDo':
 			return 'To Do';
 		case 'InProgress':
 			return 'In Progress';

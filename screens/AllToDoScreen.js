@@ -5,24 +5,33 @@ import * as WebBrowser from 'expo-web-browser';
 
 import { MonoText } from '../components/StyledText';
 
-export default function ToDoScreen() {
+// import { AddToDo } from '../components/AddToDo';
+// import { AddToDoButton } from '../components/AddToDoButton';
+
+export default function AllToDoScreen() {
 	return (
 		<View style={styles.container}>
 			<ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
 
+				
 				<View style={styles.getStartedContainer}>
 					<DevelopmentModeNotice />
 
 					<Text style={styles.getStartedText}>
 						Placeholder for To Do Screen
           			</Text>
+
+					{/* <AddToDo />
+
+					<AddToDoButton /> */}
+
 				</View>
 			</ScrollView>
 		</View>
 	);
 }
 
-ToDoScreen.navigationOptions = {
+AllToDoScreen.navigationOptions = {
 	header: null,
 };
 

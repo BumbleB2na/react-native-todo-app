@@ -8,7 +8,7 @@ export default function (containerRef) {
 			Root: {
 				path: 'root',
 				screens: {
-					ToDo: 'ToDo',
+					AllToDo: 'AllToDo',
 					InProgress: 'InProgress',
 					Done: 'Done',
 					Settings: 'settings',
