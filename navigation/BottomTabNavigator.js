@@ -6,7 +6,7 @@ import InProgressScreen from '../screens/InProgressScreen';
 import DoneScreen from '../screens/DoneScreen';
 
 const BottomTab = createBottomTabNavigator();
-const INITIAL_ROUTE_NAME = 'ToDo';
+const INITIAL_ROUTE_NAME = 'AllToDo';
 
 export default function BottomTabNavigator({ navigation, route }) {
 	// Set the header title on the parent stack navigator depending on the
