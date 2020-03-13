@@ -6,8 +6,8 @@ const Input = ({ inputValue, onChangeText, onDoneAddItem }) => (
 		style={styles.input}
 		value={inputValue}
 		onChangeText={onChangeText}
-		placeholder="Type here to add note."
-		placeholderTextColor={Colors.inputPlaceholder}
+		placeholder="Enter new item"
+		placeholderTextColor={Colors.tabIconDefault}
 		multiline={true}
 		autoCapitalize="sentences"
 		underlineColorAndroid="transparent"

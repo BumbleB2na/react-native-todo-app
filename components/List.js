@@ -12,7 +12,7 @@ import { MaterialIcons } from '@expo/vector-icons';
 import Colors from '../constants/Colors';
 const { height, width } = Dimensions.get('window');
 class List extends Component {
-	onToggleCircle = () => {
+	onToggleCheckbox = () => {
 		const { isCompleted, id, completeItem, incompleteItem } = this.props;
 		if (isCompleted) {
 			incompleteItem(id);
@@ -25,15 +25,22 @@ class List extends Component {
 		return (
 			<View style={styles.container}>
 				<View style={styles.column}>
-					<TouchableOpacity onPress={this.onToggleCircle}>
-						<View
-							style={[
-								styles.circle,
-								isCompleted
-									? { borderColor: Colors.circleActive }
-									: { borderColor: Colors.circleInactive }
-							]}
-						/>
+					<TouchableOpacity onPress={this.onToggleCheckbox}>
+						<View style={styles.checkbox}>
+							<MaterialIcons
+								name={(
+									isCompleted
+										? "check-box"
+										: "check-box-outline-blank"
+								)}
+								size={28}
+								color={(
+									isCompleted
+										? Colors.tabIconDefault
+										: Colors.tabIconSelected
+								)}
+							/>
+						</View>
 					</TouchableOpacity>
 					<Text
 						style={[
@@ -66,11 +73,11 @@ class List extends Component {
 }
 const styles = StyleSheet.create({
 	container: {
-		width: width - 50,
+		marginRight: 15,
 		flexDirection: 'row',
 		borderRadius: 5,
 		backgroundColor: 'white',
-		height: width / 8,
+		height: 75,
 		alignItems: 'center',
 		justifyContent: 'space-between',
 		marginVertical: 5,
@@ -92,19 +99,16 @@ const styles = StyleSheet.create({
 	column: {
 		flexDirection: 'row',
 		alignItems: 'center',
-		width: width / 1.5
+		width: '100%' / 1.5
 	},
 	text: {
 		fontWeight: '500',
 		fontSize: 16,
 		marginVertical: 15
 	},
-	circle: {
-		width: 30,
-		height: 30,
-		borderRadius: 15,
-		borderWidth: 3,
-		margin: 10
+	checkbox: {
+		marginLeft: 10,
+		marginRight: 10
 	},
 	button: {
 		marginRight: 10

@@ -45,7 +45,7 @@ export default class AllToDoScreen extends React.Component {
 						text: inputValue,
 						createdAt: Date.now()
 					}
-	};
+				};
 				const newState = {
 					...prevState,
 					inputValue: '',
@@ -66,7 +66,7 @@ export default class AllToDoScreen extends React.Component {
 			const newState = {
 				...prevState,
 				...allItems
-	};
+			};
 			this.saveItems(newState.allItems);
 			return { ...newState };
 		});
@@ -82,7 +82,7 @@ export default class AllToDoScreen extends React.Component {
 						isCompleted: true
 					}
 				}
-	};
+			};
 			this.saveItems(newState.allItems);
 			return { ...newState };
 		});
@@ -123,12 +123,11 @@ export default class AllToDoScreen extends React.Component {
 				<View style={styles.container}>
 					<ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
 
-						<View style={styles.getStartedContainer}>
-							<DevelopmentModeNotice />
-						</View>
-
 						<View style={styles.inputContainer}>
-							<Input inputValue={inputValue} onChangeText={this.newInputValue} />
+							<Text style={styles.inputHeader}>
+								What's Next?
+							</Text>
+							<Input inputValue={inputValue} onChangeText={this.newInputValue} onDoneAddItem={this.onDoneAddItem} />
 						</View>
 
 					</ScrollView>
@@ -158,78 +157,34 @@ AllToDoScreen.navigationOptions = {
 	header: null,
 };
 
-function DevelopmentModeNotice() {
-	if (__DEV__) {
-		const learnMoreButton = (
-			<Text onPress={handleLearnMorePress} style={styles.helpLinkText}>
-				Learn more
-			</Text>
-		);
-
-		return (
-			<Text style={styles.developmentModeText}>
-				Development mode is enabled: your app will be slower but you can use useful development tools. {learnMoreButton}
-			</Text>
-		);
-	} else {
-		return (
-			<Text style={styles.developmentModeText}>
-				You are not in development mode: your app will run at full speed.
-			</Text>
-		);
-	}
-}
-
-function handleLearnMorePress() {
-	WebBrowser.openBrowserAsync('https://docs.expo.io/versions/latest/workflow/development-mode/');
-}
-
 const styles = StyleSheet.create({
 	container: {
-		flex: 1,
 		backgroundColor: '#fff',
-	},
-	developmentModeText: {
-		marginBottom: 20,
-		color: 'rgba(0,0,0,0.4)',
-		fontSize: 14,
-		lineHeight: 19,
-		textAlign: 'center',
+		marginRight: 16
 	},
 	contentContainer: {
 		paddingTop: 30,
 	},
-	getStartedContainer: {
-		alignItems: 'center',
-		marginHorizontal: 50,
+	inputHeader: {
+		fontSize: 17,
+		color: 'rgba(96,100,109, 1)',
+		lineHeight: 24,
 	},
 	navigationFilename: {
 		marginTop: 5,
 	},
-	helpContainer: {
-		marginTop: 15,
-		alignItems: 'center',
-	},
-	helpLink: {
-		paddingVertical: 15,
-	},
-	helpLinkText: {
-		fontSize: 14,
-		color: '#2e78b7',
-	},
 
 	inputContainer: {
-		marginTop: 40,
-		paddingLeft: 15
+		paddingLeft: 15,
+		marginBottom: 10
 	},
 	list: {
 		flex: 1,
-		marginTop: 70,
 		paddingLeft: 15,
 		marginBottom: 10
 	},
 	scrollableList: {
-		marginTop: 15
+		marginTop: 5
 	},
 	column: {
 		flexDirection: 'row',
