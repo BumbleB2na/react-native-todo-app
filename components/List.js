@@ -99,7 +99,7 @@ const styles = StyleSheet.create({
 	column: {
 		flexDirection: 'row',
 		alignItems: 'center',
-		width: '100%' / 1.5
+		width: width / 1.5
 	},
 	text: {
 		fontWeight: '500',

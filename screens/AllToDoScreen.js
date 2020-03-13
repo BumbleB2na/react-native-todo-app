@@ -3,7 +3,6 @@ import { Image, Platform, StyleSheet, Text, TouchableOpacity, View, AsyncStorage
 import { ScrollView } from 'react-native-gesture-handler';
 import * as WebBrowser from 'expo-web-browser';
 
-import uuid from 'uuid/v1';
 import Input from '../components/Input';
 import List from '../components/List';
 
@@ -37,7 +36,7 @@ export default class AllToDoScreen extends React.Component {
 		const { inputValue } = this.state;
 		if (inputValue !== '') {
 			this.setState(prevState => {
-				const id = uuid();
+				const id = this.generateUid();
 				const newItemObject = {
 					[id]: {
 						id,
@@ -58,6 +57,11 @@ export default class AllToDoScreen extends React.Component {
 				return { ...newState };
 			});
 		}
+	};	
+	// generate simple unique identifier
+	generateUid = () => {
+		var uid = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
+		return uid;
 	};
 	deleteItem = id => {
 		this.setState(prevState => {
