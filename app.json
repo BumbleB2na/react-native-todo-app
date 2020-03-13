@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "Tab Navigation Template",
-    "slug": "react-native-todo-app-tutorial",
+    "slug": "react-native-todo-app",
     "privacy": "public",
     "sdkVersion": "36.0.0",
     "platforms": [
