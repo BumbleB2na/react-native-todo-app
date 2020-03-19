@@ -1,7 +1,18 @@
 {
   "expo": {
-    "name": "Tab Navigation Template",
+    "name": "A Basic To Do List",
+    "description": "Basic management of a To Do list",
+    "githubUrl": "https://github.com/BumbleB2na/react-native-todo-app",
     "slug": "react-native-todo-app",
+    "ios": {
+      "bundleIdentifier": "com.BumbleB2na.ABasicToDoList",
+      "buildNumber": "1.0.0",
+      "supportsTablet": true
+    },
+    "android": {
+      "package": "com.BumbleB2na.ABasicToDoList",
+      "versionCode": 1
+    },
     "privacy": "public",
     "sdkVersion": "36.0.0",
     "platforms": [
@@ -23,9 +34,6 @@
     },
     "assetBundlePatterns": [
       "**/*"
-    ],
-    "ios": {
-      "supportsTablet": true
-    }
+    ]
   }
 }
